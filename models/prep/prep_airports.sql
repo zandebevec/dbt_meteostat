@@ -1,5 +1,5 @@
 WITH airports_reorder AS (
-    SELECT SELECT faa
+    SELECT faa
     	   ,country
     	   ,region
     	   ,city
