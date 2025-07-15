@@ -3,7 +3,7 @@ WITH daily_data AS (
         FROM {{ref('prep_weather_daily')}}
 ),
 weekly_aggregation AS (
-        SELECT airport_code, station_id, date_year, cw
+        SELECT airport_code, station_id, date_year, date_week
             ,AVG(avg_temp_c)::NUMERIC(4,2) AS avg_temp_c
             ,MIN(min_temp_c)::NUMERIC(4,2) AS min_temp_c
             ,MAX(max_temp_c)::NUMERIC(4,2) AS max_temp_c
@@ -18,6 +18,6 @@ weekly_aggregation AS (
             ,MODE() WITHIN GROUP (ORDER BY month_name) AS month_name
             ,MODE() WITHIN GROUP (ORDER BY season) AS season
         FROM daily_data
-        GROUP BY airport_code, station_id, date_year, cw
+        GROUP BY airport_code, station_id, date_year, date_week
 )
 SELECT * FROM weekly_aggregation
