@@ -13,6 +13,6 @@ FROM {{ref('prep_flights')}}
 GROUP BY origin, dest)
 SELECT origin, a.city, a.country, a.name, dest, a2.city, a2.country, a2.name, count_flights, count_unique_planes,
 count_unique_airline, avg_actual_elapsed_time, avg_arrival_delay, max_arr_delay, min_arr_delay, count_cancelled, count_diverted
-FROM calculations c
+FROM calculations
 LEFT JOIN {{ref('prep_airports')}} a ON origin = a.faa
 LEFT JOIN {{ref('prep_airports')}} a2 ON dest = a2.faa
