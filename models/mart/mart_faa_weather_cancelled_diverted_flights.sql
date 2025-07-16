@@ -16,4 +16,4 @@ SELECT flight_date, origin, name, city, country,
 FROM airport_flights
 right JOIN {{ref('prep_weather_daily')}}
 ON airport_code = ORIGIN
-GROUP BY flight_date, origin, name, city, country, sum_cancelled, sum_diverted;
+GROUP BY flight_date, origin, name, city, country, sum_cancelled, sum_diverted
